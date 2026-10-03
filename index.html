@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureVote | Professional Digital Voting</title>
+    <meta
+      name="description"
+      content="SecureVote is a professional digital voting platform for secure elections, transparent results, and easy voter access."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <div class="brand-block">
+            <img class="brand-logo" src="./secure-vote-logo.svg" alt="SecureVote logo" />
+            <div>
+              <p class="eyebrow">Secure elections</p>
+              <h1>SecureVote</h1>
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <button id="profileBtn" class="ghost-button hidden" type="button">My profile</button>
+            <button id="logoutBtn" class="ghost-button hidden" type="button">Log out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="container main-content">
+        <section id="authView" class="panel auth-panel">
+          <div class="auth-card">
+            <div class="auth-copy">
+              <p class="eyebrow">Trusted voting infrastructure</p>
+              <h2>Modern elections with full transparency.</h2>
+              <p>
+                SecureVote helps organizations run fair, auditable, and streamlined
+                voting experiences with confidence.
+              </p>
+
+              <div class="auth-showcase">
+                <div class="showcase-icon">
+                  <img src="./secure-vote-logo.svg" alt="" />
+                </div>
+                <div>
+                  <strong>Protected access</strong>
+                  <span>Every ballot begins with a verified identity.</span>
+                </div>
+                <span class="showcase-status">LIVE</span>
+              </div>
+
+              <div class="auth-metrics" aria-label="SecureVote highlights">
+                <div>
+                  <strong>01</strong>
+                  <span>Verified entry</span>
+                </div>
+                <div>
+                  <strong>100%</strong>
+                  <span>Auditable flow</span>
+                </div>
+                <div>
+                  <strong>24/7</strong>
+                  <span>Ready to vote</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-wrap">
+              <div class="switcher" role="tablist" aria-label="Authentication mode">
+                <button class="switcher-tab active" data-auth-tab="login" type="button">Voter login</button>
+                <button class="switcher-tab" data-auth-tab="register" type="button">Register</button>
+              </div>
+
+              <form id="loginForm" class="auth-form">
+                <div class="field-group">
+                  <label for="loginId">Voter ID</label>
+                  <input id="loginId" name="loginId" type="text" placeholder="Enter your voter ID" />
+                </div>
+
+                <div class="field-group">
+                  <label for="loginPassword">Password</label>
+                  <input id="loginPassword" name="loginPassword" type="password" placeholder="Enter your password" />
+                </div>
+
+                <div class="auth-link-row">
+                  <button type="button" class="forgot-password-btn">Forgot password?</button>
+                  <button id="adminLoginLink" type="button" class="text-button admin-link">Administrator login</button>
+                </div>
+
+                <button type="submit" class="primary-button wide-button">Login</button>
+                <p id="loginError" class="form-message error hidden" aria-live="polite"></p>
+              </form>
+
+              <form id="registerForm" class="auth-form hidden">
+                <div class="field-group">
+                  <label for="registerName">Full name</label>
+                  <input id="registerName" name="registerName" type="text" placeholder="Enter Your Full Name" />
+                </div>
+
+                <div class="field-group">
+                  <label for="registerId">Voter ID card number</label>
+                  <input id="registerId" name="registerId" type="text" placeholder="Enter the number on your voter card" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="registerPassword">Password</label>
+                  <input id="registerPassword" name="registerPassword" type="password" placeholder="Minimum 4 characters" />
+                </div>
+
+                <div class="field-group">
+                  <label for="registerOtp">OTP verification</label>
+                  <input id="registerOtp" name="registerOtp" type="password" inputmode="numeric" maxlength="6" placeholder="Enter your verification code" autocomplete="one-time-code" required />
+                </div>
+
+                <button type="submit" class="primary-button wide-button">Create account</button>
+                <p id="registerError" class="form-message error hidden" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="adminLoginView" class="panel auth-panel hidden">
+          <div class="auth-card admin-login-card">
+            <div class="auth-copy">
+              <p class="eyebrow">Restricted access</p>
+              <h2>Administrator login.</h2>
+              <p>Manage elections, candidates, closing dates, and live results from the administrator workspace.</p>
+            </div>
+            <form id="adminLoginForm" class="auth-form auth-form-wrap">
+              <div class="field-group">
+                <label for="adminLoginId">Admin ID</label>
+                <input id="adminLoginId" type="text" placeholder="Enter admin ID" required />
+              </div>
+              <div class="field-group">
+                <label for="adminLoginPassword">Admin password</label>
+                <input id="adminLoginPassword" type="password" placeholder="Enter admin password" required />
+              </div>
+              <button type="submit" class="primary-button wide-button">Admin login</button>
+              <button id="voterLoginLink" type="button" class="text-button">Back to voter login</button>
+              <p id="adminLoginError" class="form-message error hidden" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+
+        <section id="profileView" class="panel profile-panel hidden">
+          <div class="section-header profile-header">
+            <div class="profile-heading">
+              <div class="profile-avatar" id="profileAvatar">SV</div>
+              <div>
+                <p class="eyebrow">My profile</p>
+                <h2 id="profileName">Account profile</h2>
+                <p id="profileRole" class="profile-subtitle">SecureVote account</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-details">
+            <div class="profile-detail">
+              <span>Voter ID</span>
+              <strong id="profileId">-</strong>
+            </div>
+            <div class="profile-detail">
+              <span>Account status</span>
+              <strong id="profileStatus">Active</strong>
+            </div>
+          </div>
+          <button id="profileBackBtn" class="ghost-button profile-back-button" type="button">Back to dashboard</button>
+        </section>
+
+        <section id="adminView" class="panel hidden">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Administrator dashboard</p>
+              <h2>Election control center</h2>
+            </div>
+            <span id="adminStatusBadge" class="status-pill status-open">Voting open</span>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card accent-card">
+              <span>Total votes</span>
+              <strong id="totalVotes">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Registered voters</span>
+              <strong id="registeredCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Current leader</span>
+              <strong id="winnerName">Awaiting votes</strong>
+            </article>
+          </div>
+
+          <div class="workspace-grid">
+            <div class="panel sub-panel">
+              <h3>Election settings</h3>
+              <form id="settingsForm" class="settings-form">
+                <div class="field-group">
+                  <label for="electionTitle">Election title</label>
+                  <input id="electionTitle" type="text" />
+                </div>
+                <div class="field-group">
+                  <label for="electionDate">Closing date</label>
+                  <input id="electionDate" type="date" />
+                </div>
+                <button type="submit" class="primary-button">Save settings</button>
+                <p id="settingsMessage" class="form-message success hidden" aria-live="polite"></p>
+              </form>
+            </div>
+
+            <div class="panel sub-panel">
+              <div class="sub-panel-heading">
+                <h3>Candidates</h3>
+                <button id="addCandidateBtn" class="ghost-button" type="button">+ Add candidate</button>
+              </div>
+              <form id="addCandidateForm" class="add-candidate-form hidden">
+                <div class="field-group">
+                  <label for="newCandidateName">Candidate name</label>
+                  <input id="newCandidateName" type="text" placeholder="Enter candidate name" required />
+                </div>
+                <div class="field-group">
+                  <label for="newCandidateDescription">Candidate statement</label>
+                  <textarea id="newCandidateDescription" rows="3" placeholder="Add a short candidate statement" required></textarea>
+                </div>
+                <div class="field-group">
+                  <label for="newCandidateImage">Candidate image</label>
+                  <input id="newCandidateImage" type="file" accept="image/png,image/jpeg,image/webp" required />
+                  <small class="field-hint">Upload a JPG, PNG, or WebP image.</small>
+                </div>
+                <div class="inline-actions">
+                  <button type="submit" class="primary-button">Add candidate</button>
+                  <button id="cancelCandidateBtn" type="button" class="ghost-button">Cancel</button>
+                </div>
+              </form>
+              <div id="adminCandidateList" class="candidate-list"></div>
+            </div>
+          </div>
+
+          <div class="panel sub-panel results-panel">
+            <h3>Live results</h3>
+            <div id="adminResults" class="results-list"></div>
+          </div>
+        </section>
+
+        <section id="voterView" class="panel hidden">
+          <div class="section-header voter-header">
+            <div>
+              <p class="eyebrow">Ballot access</p>
+              <h2 id="voterElectionTitle">Election title</h2>
+            </div>
+            <span id="voterStatus" class="status-pill status-open">Voting open</span>
+          </div>
+
+          <div class="voter-meta">
+            <p id="voterElectionDate">Closing date</p>
+            <p id="sessionLabel">Session user</p>
+          </div>
+
+          <div class="panel sub-panel candidate-panel">
+            <div class="sub-panel-heading">
+              <h3>Choose your candidate</h3>
+            </div>
+            <div id="voterCandidateList" class="candidate-grid"></div>
+          </div>
+
+          <div class="vote-actions">
+            <button id="castVoteBtn" type="button" class="primary-button">Cast vote</button>
+            <button id="endVotingBtn" type="button" class="danger-button">Close voting</button>
+          </div>
+          <p id="voterMessage" class="form-message error hidden" aria-live="polite"></p>
+          <p id="votedMessage" class="form-message success hidden" aria-live="polite">Your vote has been recorded.</p>
+
+          <section id="feedbackPanel" class="panel sub-panel feedback-panel hidden">
+            <div class="sub-panel-heading">
+              <div>
+                <p class="eyebrow">Help us improve</p>
+                <h3>Share your voting experience</h3>
+              </div>
+            </div>
+            <form id="feedbackForm" class="feedback-form">
+              <div class="field-group">
+                <label for="feedbackRating">How was your experience?</label>
+                <select id="feedbackRating" name="feedbackRating">
+                  <option value="5">Excellent</option>
+                  <option value="4">Good</option>
+                  <option value="3">Average</option>
+                  <option value="2">Needs improvement</option>
+                  <option value="1">Poor</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="feedbackText">Your feedback</label>
+                <textarea id="feedbackText" name="feedbackText" rows="4" placeholder="Tell us about your experience"></textarea>
+              </div>
+              <button type="submit" class="primary-button">Submit feedback</button>
+              <p id="feedbackMessage" class="form-message success hidden" aria-live="polite"></p>
+            </form>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div id="passwordModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <h3 id="modalTitle">Administrator confirmation</h3>
+          <button type="button" class="icon-button" data-close-modal="true" aria-label="Close">×</button>
+        </div>
+        <label for="modalPassword" class="field-label">Admin password</label>
+        <input id="modalPassword" type="password" placeholder="Enter admin password" />
+        <p id="modalError" class="form-message error hidden" aria-live="polite"></p>
+        <button id="modalConfirm" type="button" class="primary-button">Confirm</button>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
